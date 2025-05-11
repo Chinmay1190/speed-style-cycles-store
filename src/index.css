@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,7 +14,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 0 72.2% 50.6%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -30,24 +31,17 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 0 72.2% 50.6%;
 
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -61,8 +55,8 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 0 72.2% 50.6%;
+    --primary-foreground: 210 40% 98%;
 
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
@@ -78,7 +72,8 @@
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --ring: 0 72.2% 50.6%;
+    
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -97,5 +92,64 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .bike-card {
+    @apply relative rounded-lg overflow-hidden transition-all duration-300 border border-border hover:border-primary bg-card hover:shadow-lg dark:hover:shadow-primary/10;
+  }
+  
+  .bike-card-image {
+    @apply relative h-48 md:h-64 overflow-hidden;
+  }
+  
+  .bike-card:hover .bike-card-image img {
+    @apply transform scale-105 transition-transform duration-500;
+  }
+  
+  .bike-badge {
+    @apply absolute top-4 right-4 bg-bikeRed text-white text-xs font-semibold px-2 py-1 rounded;
+  }
+  
+  .price-tag {
+    @apply text-bikeRed dark:text-bikeRed font-bold text-lg md:text-xl;
+  }
+  
+  .animated-button {
+    @apply bg-bikeRed hover:bg-red-700 text-white rounded-md px-4 py-2 
+           transition-all duration-300 transform hover:scale-105
+           hover:shadow-lg relative overflow-hidden;
+  }
+  
+  .animated-button::before {
+    @apply content-[''] absolute inset-0 bg-white/20 transform scale-x-0 origin-left
+           transition-transform duration-300;
+  }
+  
+  .animated-button:hover::before {
+    @apply scale-x-100;
+  }
+  
+  .bike-card:hover {
+    @apply animate-pulse-light;
+  }
+  
+  .feature-icon {
+    @apply text-bikeRed w-6 h-6 mb-2;
+  }
+  
+  /* Hero Section Styles */
+  .hero-gradient {
+    @apply bg-gradient-to-r from-bikeBlack via-gray-800 to-bikeBlack;
+  }
+  
+  /* Animated Count */
+  .count-animate {
+    @apply transition-all duration-500 transform;
+  }
+  
+  .count-animate:hover {
+    @apply scale-110 text-bikeRed;
   }
 }
